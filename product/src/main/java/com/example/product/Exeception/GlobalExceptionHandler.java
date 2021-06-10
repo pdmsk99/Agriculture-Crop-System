@@ -1,4 +1,4 @@
-package com.example.user.Exeception;
+package com.example.product.Exeception;
 
 
 import java.time.LocalDate;
@@ -35,6 +35,31 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<> (body, headers, status);
 	}
 	
+//	@ExceptionHandler(OrderNotFoundException.class)
+//    public ResponseEntity<Object> handleOrderNotFoundException(OrderNotFoundException exception, WebRequest webRequest) {
+//		
+//		System.out.println(webRequest.toString());
+//        ExceptionResponse exceptionResponse = new ExceptionResponse();
+//        exceptionResponse.setStatus(404);
+//        exceptionResponse.setTime(LocalDateTime.now());
+//        exceptionResponse.setMessage(exception.toString());
+//  
+//        return new ResponseEntity<Object> (exceptionResponse, HttpStatus.NOT_FOUND);
+//        
+//    }
+//	
+//	@ExceptionHandler(DatabaseException.class)
+//    public ResponseEntity<Object> handleDatabaseException(DatabaseException exception, WebRequest webRequest) {
+//		
+//		System.out.println(webRequest.toString());
+//        ExceptionResponse exceptionResponse = new ExceptionResponse();
+//        exceptionResponse.setStatus(404);
+//        exceptionResponse.setTime(LocalDateTime.now());
+//        exceptionResponse.setMessage(exception.getMessage());
+//  
+//        return new ResponseEntity<Object> (exceptionResponse, HttpStatus.NOT_FOUND);
+//        
+//    }
 }
 
 

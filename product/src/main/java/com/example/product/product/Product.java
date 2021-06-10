@@ -1,68 +1,114 @@
 package com.example.product.product;
 
+import java.io.Serializable;
+import java.util.Arrays;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.mongodb.lang.NonNull;
+
 @Document
-public class Product {
+public class Product implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	
+
 	
 	@Id
-	public int id;
-	public String ProductName;
-	public int ProductId;
-	public String FarmerName;
+@NonNull
+	private String productName;
+
+@NonNull
+	private int price;
+	
+@NonNull
+	private String description;
+	
+@NonNull
+	private int quantity;
+	
+
+//	private byte[] image;
+	
 	public Product() {
 		
 	}
+	 
+	public Product(String productName, int price, String description, int quantity) {
+		
+		
+		this.productName = productName;
+		this.price = price;
+		this.description = description;
+		this.quantity = quantity;
+//		this.image = image;
+	}
+
+
+
+
+	public String getproductName() {
+		return productName;
+	}
+
+
+	public void setproductName(String productName) {
+		this.productName = productName;
+	}
+
+
+	public int getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	public int getBrand() {
+		return quantity;
+	}
+
+
+	public void setBrand(int quantity) {
+		this.quantity = quantity;
+	}
+
+
+//	public byte[] getImage() {
+//		return image;
+//	}
+//
+//	public void setImage(byte[] image) {
+//		this.image = image;
+//	}
 	
-	public Product(int id, String productName, int productId, String farmerName) {
-		super();
-		this.id = id;
-		ProductName = productName;
-		ProductId = productId;
-		FarmerName = farmerName;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getProductName() {
-		return ProductName;
-	}
-
-	public void setProductName(String productName) {
-		ProductName = productName;
-	}
-
-	public int getProductId() {
-		return ProductId;
-	}
-
-	public void setProductId(int productId) {
-		ProductId = productId;
-	}
-
-	public String getFarmerName() {
-		return FarmerName;
-	}
-
-	public void setFarmerName(String farmerName) {
-		FarmerName = farmerName;
-	}
-
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", ProductName=" + ProductName + ", ProductId=" + ProductId + ", FarmerName="
-				+ FarmerName + "]";
+		return "Product [ productName=" + productName + ", price=" + price + ", description="
+				+ description + ", quantity=" + quantity + "]";
 	}
-	
-	
-	
+
 	
 
+
+	
+
+	
+	
+	
 }
