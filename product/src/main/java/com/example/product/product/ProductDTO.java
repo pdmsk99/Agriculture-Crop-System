@@ -3,106 +3,105 @@ package com.example.product.product;
 
 
 
-import javax.validation.constraints.Size;
+import java.io.Serializable;
 
-import com.mongodb.lang.NonNull;
+import org.springframework.lang.NonNull;
 
 
 
-public class ProductDTO {
 
-		private static final long serialVersionUID = 1L;
 
-		
+public class ProductDTO implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+//	@Size(min=2, message = "name must not be less than 2 characters")
 	@NonNull
-	@Size(min=2, message = "productName must not be less than 2 characters")
-		private String productName;
-		
+	private String name;
+	
 	@NonNull
-		private int price;
-		
+	private String price;
+	
 	@NonNull
-	@Size(message = "Description cannot be empty")
-		private String description;
-		
+	private String description;
+	
 	@NonNull
-	@Size(message = "Quantity cannot be empty")
-		private int quantity;
+	private String quantity;
+	
+//	private byte[] image; 
+	
+	
+	
+	public ProductDTO() {
 		
-//		private byte[] image; 
-		
-		
-		
-		public ProductDTO() {
+	}
+	 
+	public ProductDTO(String name, String price, String description, String quantity) {
 			
-		}
-		 
-		public ProductDTO( String productName, int price, String description, int quantity) {
-				
-			
-			this.productName = productName;
-			this.price = price;
-			this.description = description;
-			this.quantity = quantity;
-//			this.image = image;
-		}
 		
 		
-
-		public String getproductName() {
-			return productName;
-		}
-
-
-		public void setproductName(String productName) {
-			this.productName = productName;
-		}
+		this.name = name;
+		this.price = price;
+		this.description = description;
+		this.quantity = quantity;
+//		this.image = image;
+	}
 
 
-		public int getPrice() {
-			return price;
-		}
+
+	public String getName() {
+		return name;
+	}
 
 
-		public void setPrice(int price) {
-			this.price = price;
-		}
+	public void setName(String name) {
+		this.name = name;
+	}
 
 
-		public String getDescription() {
-			return description;
-		}
+	public String getPrice() {
+		return price;
+	}
 
 
-		public void setDescription(String description) {
-			this.description = description;
-		}
+	public void setPrice(String price) {
+		this.price = price;
+	}
 
 
-		public int getBrand() {
-			return quantity;
-		}
+	public String getDescription() {
+		return description;
+	}
 
 
-		public void setBrand(int quantity) {
-			this.quantity = quantity;
-		}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-		
 
-//		public byte[] getImage() {
-//			return image;
-//		}
+
+	public String getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
+	
+//	public byte[] getImage() {
+//	return image;
+//}
 //
-//		public void setImage(byte[] image) {
-//			this.image = image;
-//		}
+//public void setImage(byte[] image) {
+//	this.image = image;
+//}
 
-		@Override
-		public String toString() {
-			return "ProductDTO [price=" + price + ", description=" + description + ", quantity="
-					+ quantity + "]";
-		}
+	@Override
+	public String toString() {
+		return "ProductDTO [name=" + name + ", price=" + price + ", description=" + description + ", quantity="
+				+ quantity + "]";
+	}
 
-		
+
+	
 }
