@@ -11,9 +11,9 @@ public interface IProductService {
 
 	public List<ProductDTO> update(ProductDTO bean);
 
-	public List<ProductDTO> delete(String productName);
+	public List<ProductDTO> delete(String Name);
 
-	public ProductDTO findByproductName(String productName);
+	public ProductDTO findByName(String Name);
 
 	public List<ProductDTO> getAllProducts();
 

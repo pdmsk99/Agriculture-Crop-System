@@ -42,18 +42,18 @@ public class ProductServiceImpl implements IProductService {
 	
 	@Override
 	public List<ProductDTO> add(ProductDTO productDto) throws DuplicateRecordFoundException{
-		
+		System.out.println(productDto);
 		if(productDto == null)
 		{
 			return null;
 		}
 		
-		Optional<Product> checking = Optional.of(productrepository.findByproductName(convertDTOToEntity(productDto).getproductName()));
-		if(checking.isPresent())
-		{
-			login.warn("Records Exists");
-			throw new DuplicateRecordFoundException("Product Already Exists");
-		}
+//		Optional<Product> checking = Optional.of(productrepository.findByName(convertDTOToEntity(productDto).getName()));
+//		if(checking.isPresent())
+//		{
+//			login.warn("Records Exists");
+//			throw new DuplicateRecordFoundException("Product Already Exists");
+//		}
 		Product product = convertDTOToEntity(productDto);
 		product = productrepository.save(product);
 		productDto = convertEntityToDTO(product);
@@ -73,13 +73,13 @@ public class ProductServiceImpl implements IProductService {
 		{
 			return null;
 		}
-		Product find = productrepository.findByproductName(productName);
+		Product find = productrepository.findByName(productName);
 		if(find== null)
 		{
 			login.warn("Records Not Found");
 			throw new RecordNotFoundException("Records Not Exists");
 		}
-		productrepository.deleteByproductName(productName);
+		productrepository.deleteByName(productName);
 		List<ProductDTO> productDto = new ArrayList<>();
 		for(Product c:productrepository.findAll())
 		{
@@ -94,12 +94,12 @@ public class ProductServiceImpl implements IProductService {
 
 
 	@Override
-	public ProductDTO findByproductName(String productName) throws RecordNotFoundException{
-		if(productName.length() == 0)
+	public ProductDTO findByName(String Name) throws RecordNotFoundException{
+		if(Name.length() == 0)
 		{
 			return null;
 		}
-		Optional<Product>find = Optional.of(productrepository.findByproductName(productName));
+		Optional<Product>find = Optional.of(productrepository.findByName(Name));
 		if(!find.isPresent() || find == null)
 		{
 			login.warn("Records Not Found");
@@ -115,11 +115,10 @@ public class ProductServiceImpl implements IProductService {
 	{
 		Product product = new Product();
 		
-	
-		product.setproductName(productDto.getproductName());
+	    product.setQuantity(productDto.getQuantity());
+		product.setName(productDto.getName());
 		product.setPrice(productDto.getPrice());
 		product.setDescription(productDto.getDescription());
-		product.setBrand(productDto.getBrand());
 //		product.setImage(productDto.getImage());
 
 		
@@ -135,11 +134,11 @@ public class ProductServiceImpl implements IProductService {
 	{
 		ProductDTO productDto = new ProductDTO();
 		
-		
-		productDto.setproductName(product.getproductName());
+		productDto.setQuantity(product.getQuantity());
+		productDto.setName(product.getName());
 		productDto.setPrice(product.getPrice());
 		productDto.setDescription(product.getDescription());
-		productDto.setBrand(product.getBrand());
+
 //		productDto.setImage(product.getImage());
 		
 		

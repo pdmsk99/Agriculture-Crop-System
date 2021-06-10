@@ -4,8 +4,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface productRepository extends MongoRepository<Product , String>{
 	
-	public Product findByproductName(String productName);
+	public Product findByName(String Name);
 
-	public void deleteByproductName(String productName);
+	public void deleteByName(String Name);
 
 }
