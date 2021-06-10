@@ -1,6 +1,9 @@
 package com.example.user.user;
 
 import java.io.Serializable;
+
+import javax.validation.constraints.Size;
+
 import com.mongodb.lang.NonNull;
 
 
@@ -21,6 +24,7 @@ public class UserDTO implements Serializable{
 	private String lastName;
 	
 	@NonNull
+	@Size(min=6 , message = "password must not be less than 6 characters")
 	private String password;
 	
 	@NonNull

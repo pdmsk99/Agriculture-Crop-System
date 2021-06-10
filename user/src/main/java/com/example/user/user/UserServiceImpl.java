@@ -7,14 +7,12 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.user.Exeception.DuplicateRecordFoundException;
 import com.example.user.Exeception.RecordNotFoundException;
 
-
-
-
-
+@Service
 public class UserServiceImpl implements IUserService{
 	
 	@Autowired
@@ -38,7 +36,6 @@ public class UserServiceImpl implements IUserService{
 		userDto.setRole(user.getRole());
 		
 		return userDto;
-		
 	}
 	
 	public static User convertDTOToEntity(UserDTO userDto) {
